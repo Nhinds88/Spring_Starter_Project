@@ -1,9 +1,17 @@
 package com.example.demo;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+@Entity
 public class Person {
+
+    @Id
+    @GeneratedValue
+    private long id;
 
     @NotNull
     @Size(min=3, max=25)
@@ -23,10 +31,43 @@ public class Person {
         favoriteFood = null;
     }
 
-    public Person(String firstName, String lastName, String favoriteFood) {
+    public Person(long id, String firstName, String lastName, String favoriteFood) {
         super();
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.favoriteFood = favoriteFood;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getFavoriteFood() {
+        return favoriteFood;
+    }
+
+    public void setFavoriteFood(String favoriteFood) {
         this.favoriteFood = favoriteFood;
     }
 }
